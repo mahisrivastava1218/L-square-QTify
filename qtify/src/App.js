@@ -9,9 +9,6 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a>
-          Learn React
-        </a>
         <p>Hello to Vercel"</p>
       </header>
     </div>
