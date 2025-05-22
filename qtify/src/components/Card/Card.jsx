@@ -2,7 +2,7 @@ import React,{useEffect, useState} from "react";
 import ProductCard from "./ProductCard";
 import axios from "axios";
 import { Grid } from "@mui/material";
-import styles from "./Product.module.css";
+import styles from "./Card.module.css";
 // react component named start with capital letter
 //make react component call api store in setProdutcs,setFilteredProducts using hook useState call api using useEffect hook empty dependency arr
 function MyCard(){
