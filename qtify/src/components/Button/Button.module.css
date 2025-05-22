@@ -16,3 +16,6 @@
     right: 35px;
     position: relative;
 }
+.button:hover{
+    cursor: pointer;
+}
