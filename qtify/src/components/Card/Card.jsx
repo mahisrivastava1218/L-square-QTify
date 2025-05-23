@@ -5,27 +5,37 @@ import { Grid } from "@mui/material";
 import styles from "./Card.module.css";
 // react component named start with capital letter
 //make react component call api store in setProdutcs,setFilteredProducts using hook useState call api using useEffect hook empty dependency arr
-function MyCard(){
+export default function MyCard(){
     // api calling
-      const [products,setProducts]=useState([]);
-      const [filteredProducts,setFilteredProducts]=useState([]);
-      const performApi=async()=>{
+      const [topAlbums,setTopAlbums]=useState([]);
+      const [newAlbums,setNewAlbums]=useState([]);
+
+      const fetchTopAlbums=async()=>{
          try{
             const response = await axios.get("https://qtify-backend-labs.crio.do/albums/top")
-            setProducts(response.data);
-            setFilteredProducts(response.data);
-            console.log(response.data,"setProducts",setProducts,"setFilteredProducts",setFilteredProducts);
+            setTopAlbums(response.data);
+            console.log(response.data,"setTopAlbum",setTopAlbums,"topAlbums",topAlbums);
+        }catch(e){
+          console.log(e);
+        }
+      }
+        const fetchNewAlbums=async()=>{
+         try{
+            const response = await axios.get("https://qtify-backend-labs.crio.do/albums/new")
+            setNewAlbums(response.data);
+            console.log(response.data,"setNewAlbums",setNewAlbums,"newAlbums",newAlbums);
         }catch(e){
           console.log(e);
         }
       }
       
 useEffect(()=>{
-    performApi();
+    fetchTopAlbums();
+    fetchNewAlbums();
 },[])
 
-const Section =({productProp,filteredProducts})=>{
-    console.log(filteredProducts.length);
+const Section =({productProp,albums})=>{
+    console.log(albums.length);
   return(
    <div className={styles.myCardContainer}>
     <div className={styles.albumHeader}>
@@ -33,8 +43,8 @@ const Section =({productProp,filteredProducts})=>{
          <span className={styles.collapse}>Show all</span>
     </div>
     <Grid container className={styles.myCardGrid}>
-    {filteredProducts.length>0 ? (
-      filteredProducts.map((product,index)=>(
+    {albums.length>0 ? (
+      albums.map((product,index)=>(
         <Grid item key={index}>
          <AlbumCard  productProp={product}/>
          </Grid>
@@ -48,10 +58,8 @@ const Section =({productProp,filteredProducts})=>{
 }
   return (
     <div className={styles.container}>
-    <Section productProp="Top" filteredProducts={filteredProducts}/>
-    <Section productProp="New" filteredProducts={filteredProducts}/>
+    <Section productProp="Top" albums={topAlbums}/>
+    <Section productProp="New" albums={newAlbums}/>
     </div>
   );
 }
-
-export default MyCard;
