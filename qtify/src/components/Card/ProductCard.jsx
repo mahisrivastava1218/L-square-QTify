@@ -12,7 +12,7 @@ import styles from "./Product.module.css";
 //     "durationInMs":"3450"
 // }
 
-function ProductCard({productProp}) {
+function AlbumCard({productProp}) {
   console.log(productProp);
   console.log(productProp.image);
 
@@ -34,4 +34,4 @@ function ProductCard({productProp}) {
   );
 }
 
-export default ProductCard;
+export default AlbumCard;

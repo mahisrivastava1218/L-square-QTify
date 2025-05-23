@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from "react";
-import ProductCard from "./ProductCard";
+import AlbumCard from "./ProductCard";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import styles from "./Card.module.css";
@@ -24,27 +24,32 @@ useEffect(()=>{
     performApi();
 },[])
 
-const Album =({productProp,filteredProducts})=>{
+const Section =({productProp,filteredProducts})=>{
+    console.log(filteredProducts.length);
   return(
    <div className={styles.myCardContainer}>
     <div className={styles.albumHeader}>
         <span className={styles.albumtitle}>{productProp} Albums</span>
-         <span className={styles.collapse}>Collapse</span>
+         <span className={styles.collapse}>Show all</span>
     </div>
     <Grid container className={styles.myCardGrid}>
-    {filteredProducts.map((product,index)=>(
+    {filteredProducts.length>0 ? (
+      filteredProducts.map((product,index)=>(
         <Grid item key={index}>
-         <ProductCard  productProp={product}/>
+         <AlbumCard  productProp={product}/>
          </Grid>
-    ))}
+      ))
+    ):(
+        <p>No album available</p>
+    )}
     </Grid>
     </div>
   )
 }
   return (
     <div className={styles.container}>
-    <Album productProp="Top" filteredProducts={filteredProducts}/>
-    <Album productProp="New" filteredProducts={filteredProducts}/>
+    <Section productProp="Top" filteredProducts={filteredProducts}/>
+    <Section productProp="New" filteredProducts={filteredProducts}/>
     </div>
   );
 }
