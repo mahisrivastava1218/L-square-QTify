@@ -1,16 +1,31 @@
-.myCardContainer{
-    top: 368px;
-    width: 1376px;
-    height: 280px;
-    position: absolute;
+.container{
+    width: 1384px;
+    /* height: 592px;   */
+    top:362px;
     left:31px;
-    gap:32px;
+    gap: 32px;
+    background-color: black;
+    /* border:1px solid red; */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+.myCardContainer{
+    width:100%;
+    max-width: 1376px;
+    /* height: 280px; */
+    /* position: absolute; */
+    /* gap:32px; */
     /* border: 1px solid blue; */
     background-color: black;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-
-.album{
+.albumHeader{
+    position: relative;
+}
+.albumtitle{
     font-family: Poppins,sans-serif;
     font-size: 20px;
     font-weight: 600;
@@ -22,19 +37,21 @@
     color: green;
     width: 85px;
     height: 30px;
-    left: 1291px;
+    left: 1287px;
     font-family: Poppins,sans-serif;
     font-weight: 600;
     font-size: 20px;
-    left: 1291px;
     position: absolute;
 }
 .myCardGrid{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
     width: 1353px;
-    height:232px;
-    top:48px;
-    left:12px;
-    position: absolute;
-    gap: 40px;
+    /* height:232px; */
+    /* margin-bottom: 30px; */
+    /* top:48px; */
+    /* left:12px; */
+    /* position: absolute; */
     /* border: 1px solid green; */
+    overflow: hidden;
 }

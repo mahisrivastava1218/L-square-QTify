@@ -24,20 +24,27 @@ useEffect(()=>{
     performApi();
 },[])
 
-
-  return (
-    <div className={styles.myCardContainer}>
-    <div>
-        <span className={styles.album}>Top Albums</span>
+const Album =({productProp,filteredProducts})=>{
+  return(
+   <div className={styles.myCardContainer}>
+    <div className={styles.albumHeader}>
+        <span className={styles.albumtitle}>{productProp} Albums</span>
          <span className={styles.collapse}>Collapse</span>
     </div>
-    <Grid container style={{display:'grid',gridTemplateColumns:'repeat(7,1Fr)'}} className={styles.myCardGrid}>
+    <Grid container className={styles.myCardGrid}>
     {filteredProducts.map((product,index)=>(
         <Grid item key={index}>
          <ProductCard  productProp={product}/>
          </Grid>
     ))}
     </Grid>
+    </div>
+  )
+}
+  return (
+    <div className={styles.container}>
+    <Album productProp="Top" filteredProducts={filteredProducts}/>
+    <Album productProp="New" filteredProducts={filteredProducts}/>
     </div>
   );
 }
