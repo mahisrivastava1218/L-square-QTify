@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import {Tab,Tabs,Box} from "@mui/material";
-import { Swiper,SwiperSlide } from "swiper/react";
-import AlbumCard from "./ProductCard";
-import styles from "./Card.module.css";
-import {Navigation} from "swiper/modules"
 import 'swiper/css/navigation';
-import leftArrow from "../../assets/LeftArrow.svg";
-import rightArrow from "../../assets/RightArrow.svg";
-import {Grid} from "@mui/material";
+import Albums from "./AlbumCard";
 export default function TabComponent({productProp,data}){
     const songs = productProp;
     console.log(productProp,data);
@@ -58,7 +52,7 @@ export default function TabComponent({productProp,data}){
                 <Tab label="Jazz"  sx={{color:"white"}}></Tab>
                 <Tab label="Blues"  sx={{color:"white"}}></Tab>
             </Tabs>
-                <Grid container className={styles.myCardGrid}>
+                {/* <Grid container className={styles.myCardGrid}>
             {songs.length>0 ? (
                   <>
                     <div className={styles.customprev}><img src={leftArrow} alt="Left Arrow"/></div>
@@ -84,7 +78,8 @@ export default function TabComponent({productProp,data}){
             ):(
                     <p>No album available</p>
                 )}
-                </Grid>
+                </Grid> */}
+                              <Albums songs={songs} filteredSongs={filteredSongs} readOnly/>
         </Box>
     )
 }
