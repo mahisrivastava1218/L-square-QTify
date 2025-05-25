@@ -9,19 +9,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import leftArrow from "../../assets/LeftArrow.svg";
 import rightArrow from "../../assets/RightArrow.svg";
-
+import TabComponent from "./TabComponent";
 // react component named start with capital letter
 //make react component call api store in setProdutcs,setFilteredProducts using hook useState call api using useEffect hook empty dependency arr
 export default function MyCard(){
     // api calling
       const [topAlbums,setTopAlbums]=useState([]);
       const [newAlbums,setNewAlbums]=useState([]);
-
+      const[song,setSong] = useState([]);
+      const[songdata,setSongData] = useState([]);
       const fetchTopAlbums=async()=>{
          try{
             const response = await axios.get("https://qtify-backend-labs.crio.do/albums/top")
             setTopAlbums(response.data);
-            console.log(response.data,"setTopAlbum",setTopAlbums,"topAlbums",topAlbums);
+            // console.log(response.data,"setTopAlbum",setTopAlbums,"topAlbums",topAlbums);
         }catch(e){
           console.log(e);
         }
@@ -30,7 +31,25 @@ export default function MyCard(){
          try{
             const response = await axios.get("https://qtify-backend-labs.crio.do/albums/new")
             setNewAlbums(response.data);
-            console.log(response.data,"setNewAlbums",setNewAlbums,"newAlbums",newAlbums);
+            // console.log(response.data,"setNewAlbums",setNewAlbums,"newAlbums",newAlbums);
+        }catch(e){
+          console.log(e);
+        }
+      }
+      const fetchSongs = async()=>{
+        try{
+          const response = await axios.get("https://qtify-backend-labs.crio.do/songs");
+          setSong(response.data);
+          // console.log(response.data,"fetchSongs");
+        }catch(e){
+          console.log(e);
+        }
+      }
+      const fetchSongsData = async()=>{
+        try{
+          const response = await axios.get("https://qtify-backend-labs.crio.do/genres");
+          setSongData(response.data);
+          // console.log(response.data,"fetchSongsData");
         }catch(e){
           console.log(e);
         }
@@ -39,16 +58,23 @@ export default function MyCard(){
 useEffect(()=>{
     fetchTopAlbums();
     fetchNewAlbums();
+    fetchSongs();
+    fetchSongsData();
 },[]);
 
-const Section =({productProp,albums})=>{
-    console.log(albums.length);
+const Section =({productProp,albums,data,readOnly})=>{
+    // console.log(albums.length);
+    // console.log(albums,productProp,readOnly);
+        // console.log(albums,productProp);
   return(
-   <div className={styles.myCardContainer}>
+   <div style={readOnly ? {"borderTop":"1px solid #34C94B","borderBottom":"1px solid #34C94B","padding":"40px 0px"} : {}} className={styles.myCardContainer}>
     <div className={styles.albumHeader}>
         <span className={styles.albumtitle}>{productProp} Albums</span>
-         <span className={styles.collapse}>Show all</span>
+         {!readOnly && <span className={styles.collapse}>Show all</span>}
     </div>
+    {readOnly ? (
+     <TabComponent productProp={albums} data={data}/>
+      ): null}
     <Grid container className={styles.myCardGrid}>
     {/* {albums.length>0 ? (
       albums.map((product,index)=>(
@@ -71,15 +97,13 @@ const Section =({productProp,albums})=>{
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
       >
-        {albums.map((album,index)=>{
-          return(
-            <>
+        {!readOnly &&
+          albums.map((album,index)=>(
           <SwiperSlide key={index}>
           <AlbumCard productProp={album}/>
           </SwiperSlide>
-            </>
           )
-        })}
+       )}
       </Swiper> 
      <div className={styles.customnext}><img src={rightArrow} alt="right Arrow"/></div>
 </>
@@ -94,6 +118,8 @@ const Section =({productProp,albums})=>{
     <div className={styles.container}>
     <Section productProp="Top" albums={topAlbums}/>
     <Section productProp="New" albums={newAlbums}/>
+    <Section productProp="Song" albums={song} data={songdata} readOnly/>
     </div>
   );
 }
+//song -> key is data.key if data.key === songs.key then show jazz key ,that key

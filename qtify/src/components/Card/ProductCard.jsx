@@ -13,8 +13,8 @@ import styles from "./Product.module.css";
 // }
 
 function AlbumCard({productProp}) {
-  console.log(productProp);
-  console.log(productProp.image);
+  // console.log(productProp);
+  // console.log(productProp.image);
 
   return (
     <Card className={styles.container}>
