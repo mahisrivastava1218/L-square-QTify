@@ -4,9 +4,10 @@ import { Swiper,SwiperSlide } from "swiper/react";
 import AlbumCard from "./ProductCard";
 import styles from "./Card.module.css";
 import {Navigation} from "swiper/modules"
-
+import 'swiper/css/navigation';
 import leftArrow from "../../assets/LeftArrow.svg";
 import rightArrow from "../../assets/RightArrow.svg";
+import {Grid} from "@mui/material";
 export default function TabComponent({productProp,data}){
     const songs = productProp;
     console.log(productProp,data);
@@ -57,6 +58,9 @@ export default function TabComponent({productProp,data}){
                 <Tab label="Jazz"  sx={{color:"white"}}></Tab>
                 <Tab label="Blues"  sx={{color:"white"}}></Tab>
             </Tabs>
+                <Grid container className={styles.myCardGrid}>
+            {songs.length>0 ? (
+                  <>
                     <div className={styles.customprev}><img src={leftArrow} alt="Left Arrow"/></div>
             <Swiper  modules={[Navigation]}
                   navigation={{
@@ -76,6 +80,11 @@ export default function TabComponent({productProp,data}){
          ))}
         </Swiper>
              <div className={styles.customnext}><img src={rightArrow} alt="right Arrow"/></div>
+             </>
+            ):(
+                    <p>No album available</p>
+                )}
+                </Grid>
         </Box>
     )
 }
