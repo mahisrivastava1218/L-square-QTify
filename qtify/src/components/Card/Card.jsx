@@ -1,10 +1,11 @@
-import React,{useEffect, useState} from "react";
+import React,{useEffect} from "react";
 import axios from "axios";
 import styles from "./Card.module.css";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import TabComponent from "./TabComponent";
 import Albums from "./AlbumCard";
+import { useState } from "react";
 // react component named start with capital letter
 //make react component call api store in setProdutcs,setFilteredProducts using hook useState call api using useEffect hook empty dependency arr
 export default function MyCard(){

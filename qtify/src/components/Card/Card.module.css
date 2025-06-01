@@ -1,5 +1,5 @@
 .container{
-    width: 1384px;
+    width: 95%;
     /* height: 592px;   */
     top:362px;
     left:31px;
@@ -46,7 +46,7 @@
 .myCardGrid{
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    width: 1353px;
+    width: 93%;
     /* height:232px; */
     /* margin-bottom: 30px; */
     /* top:48px; */
