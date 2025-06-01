@@ -1,20 +1,37 @@
 .button{
-    width: 170px;
-    height: 47px;
+    /* width: 170px; */
+    height: 60%;
     /* top: 13px; */
     border-radius: 12px;
-    border: 1px;
     padding: 10px 16px 10px 16px;
     background-color: #121212;
     font-family: Poppins;
     font-weight: 600;
     font-size: 18px;
+    display:flex;
     letter-spacing: 0.25px;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     color: #34C94B;
-    right: 35px;
+    /* right: 35px; */
     position: relative;
     cursor: pointer;
+     transition: all 0.3s ease;
+     box-sizing:border-box;
+}
+@media (max-width: 768px) {
+  .button {
+    width: 140px;
+    font-size: 16px; 
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    width: 120px; 
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 }
 

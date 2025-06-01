@@ -5,8 +5,8 @@
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   border: 1px solid var(--color-black);
-  width: 568px;
-  top: 13px;
+  width: 502px;
+  /* top: 13px; */
 }
 
 .wrapper {
@@ -22,7 +22,6 @@
   border: 1px solid var(--color-black);
   border-left: none;
   cursor: pointer;
-  height: 100%;
 }
 
 .listElement {

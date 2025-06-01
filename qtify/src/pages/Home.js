@@ -1,7 +1,7 @@
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero'
+import Navbar from '../components/Navbar/Navbar';
+import Hero from '../components/Hero/Hero'
 import styles from './Home.css';
-import MyCard from './components/Card/Card';
+import MyCard from '../components/Card/Card';
 function Home() {
   return (
     <>
